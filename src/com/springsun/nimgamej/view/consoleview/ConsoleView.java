@@ -65,20 +65,20 @@ public class ConsoleView implements IView {
     public void moveHuman(ListOfHeaps h) {
         int heap = askNumberOfTheHeap(h);
         int stones = askQuantityOfStones(h, heap);
-        h.setListOfHeaps(heap, stones);
+        h.setListOfHeaps(heap, h.getListOfHeaps()[heap] - stones);
     }
 
     @Override
     public void showCurrentStateOfHeaps(ListOfHeaps h) {
         int[] heaps = h.getListOfHeaps();
-        for (int i : heaps) {
+        for (int i = 0; i < heaps.length; i++) {
             System.out.println("HEAP " + (i + 1) + "  [ " + heaps[i] + " ]");
         }
 
     }
 
     @Override
-    public void showMessage(Players player) {
+    public void showMessage(String player) {
         System.out.println(player + "'s move:");
     }
 

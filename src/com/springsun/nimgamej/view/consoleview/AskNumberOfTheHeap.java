@@ -15,11 +15,11 @@ public class AskNumberOfTheHeap {
             if (result < 1 || result > quantityOfHeaps) {
                 System.out.println("The number must be from 1 to " + quantityOfHeaps);
             } else {
-                if (h.getListOfHeaps()[result] == 0) {
+                if (h.getListOfHeaps()[result - 1] == 0) {
                     System.out.println("The HEAP must be nonempty");
                 }
             }
-        } while (result < 1 || result > quantityOfHeaps || h.getListOfHeaps()[result] == 0);
+        } while (result < 1 || result > quantityOfHeaps || h.getListOfHeaps()[result - 1] == 0);
         return result - 1;
     }
 

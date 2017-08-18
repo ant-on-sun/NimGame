@@ -6,8 +6,8 @@ public class ViktoryCondition {
     
     public static boolean nobodyHasWonYet(int[] heaps){
         int sum = 0;
-        for (int heap : heaps) {
-            sum += heap;
+        for (int i = 0; i < heaps.length; i++) {
+            sum += heaps[i];
         }
         if (sum == 0) {
             return false;

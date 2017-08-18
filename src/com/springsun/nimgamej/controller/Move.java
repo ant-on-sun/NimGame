@@ -1,6 +1,7 @@
 package com.springsun.nimgamej.controller;
 
 import com.springsun.nimgamej.model.ListOfHeaps;
+import com.springsun.nimgamej.model.ListOfPlayers;
 import com.springsun.nimgamej.model.Players;
 import com.springsun.nimgamej.view.IView;
 
@@ -9,9 +10,9 @@ import static com.springsun.nimgamej.controller.MadComputerMove.moveMadComputer;
 
 public class Move {
 
-    public static void makeMove(IView v, ListOfHeaps h, Players player) {
+    public static void makeMove(IView v, ListOfHeaps h, Players player, ListOfPlayers players, int i) {
 
-        v.showMessage(player);
+        v.showMessage(DefinePlayer.definePlayer(players, i));
         switch (player) {
             case HUMAN:
                 v.moveHuman(h);

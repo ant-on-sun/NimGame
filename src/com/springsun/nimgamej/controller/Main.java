@@ -15,15 +15,21 @@ public class Main {
         ListOfHeaps listOfHeaps = v.createHeaps();
         ListOfPlayers listOfPlayers = v.createPlayers();
         int i = 0;
+        v.showCurrentStateOfHeaps(listOfHeaps);
         do {
-            Move.makeMove(v, listOfHeaps, listOfPlayers.getPlayers().get(i));
+            Move.makeMove(v, listOfHeaps, listOfPlayers.getPlayers().get(i), listOfPlayers, i);
             v.showCurrentStateOfHeaps(listOfHeaps);
             i++;
             if (i == listOfPlayers.getPlayers().size()) {
                 i = 0;
             }
         } while (ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps()));
-        v.winnerAnnouncement(DefineWinner.defineWinner(listOfPlayers, i));
+        if (i == 0) {
+            i = listOfPlayers.getPlayers().size() - 1;
+        } else {
+            i--;
+        }
+        v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, i));
 
     }
 }

@@ -12,7 +12,7 @@ public class MadComputerMove {
             randomNumHeap = ThreadLocalRandom.current().nextInt(0, heaps.length);
         } while (heaps[randomNumHeap] == 0);
         int randomNumStones = ThreadLocalRandom.current().nextInt(1,heaps[randomNumHeap] + 1);
-        h.setListOfHeaps(randomNumHeap,randomNumStones);
+        h.setListOfHeaps(randomNumHeap,heaps[randomNumHeap] - randomNumStones);
     }
 
 }

@@ -11,6 +11,6 @@ public interface IView {
     ListOfPlayers createPlayers();
     void showCurrentStateOfHeaps(ListOfHeaps h);
     void moveHuman(ListOfHeaps h);
-    void showMessage(Players player);
+    void showMessage(String player);
     void winnerAnnouncement(String winner);
 }
