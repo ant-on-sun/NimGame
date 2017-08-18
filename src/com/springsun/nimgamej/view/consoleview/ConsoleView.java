@@ -2,7 +2,6 @@ package com.springsun.nimgamej.view.consoleview;
 
 import com.springsun.nimgamej.model.ListOfHeaps;
 import com.springsun.nimgamej.model.ListOfPlayers;
-import com.springsun.nimgamej.model.Players;
 import com.springsun.nimgamej.view.IView;
 
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfComputers.askNumberOfComputers;
@@ -87,23 +86,23 @@ public class ConsoleView implements IView {
         System.out.println("Player " + winner + " has won!");
     }
 
-    public void setNumberOfHumans(int numberOfHumans) {
+    void setNumberOfHumans(int numberOfHumans) {
         this.numberOfHumans = numberOfHumans;
     }
 
-    public void setNumberOfComputers(int numberOfComputers) {
+    void setNumberOfComputers(int numberOfComputers) {
         this.numberOfComputers = numberOfComputers;
     }
 
-    public void setNumberOfMadComputers(int numberOfMadComputers) {
+    void setNumberOfMadComputers(int numberOfMadComputers) {
         this.numberOfMadComputers = numberOfMadComputers;
     }
 
-    public void setNumberOfHeaps(int numberOfHeaps) {
+    void setNumberOfHeaps(int numberOfHeaps) {
         this.numberOfHeaps = numberOfHeaps;
     }
 
-    public void setNumberOfStones(int numberOfStones) {
+    void setNumberOfStones(int numberOfStones) {
         this.numberOfStones = numberOfStones;
     }
 }

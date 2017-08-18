@@ -2,9 +2,9 @@ package com.springsun.nimgamej.controller;
 
 import com.springsun.nimgamej.model.ListOfHeaps;
 
-public class ComputerMove {
+class ComputerMove {
 
-    public static void moveComputer(ListOfHeaps h) {
+    static void moveComputer(ListOfHeaps h) {
         int[] heaps = h.getListOfHeaps();
         int nimSum = 0;
         for (int i = 0; i < heaps.length; i++) {

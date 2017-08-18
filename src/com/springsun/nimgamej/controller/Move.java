@@ -8,9 +8,9 @@ import com.springsun.nimgamej.view.IView;
 import static com.springsun.nimgamej.controller.ComputerMove.moveComputer;
 import static com.springsun.nimgamej.controller.MadComputerMove.moveMadComputer;
 
-public class Move {
+class Move {
 
-    public static void makeMove(IView v, ListOfHeaps h, Players player, ListOfPlayers players, int i) {
+    static void makeMove(IView v, ListOfHeaps h, Players player, ListOfPlayers players, int i) {
 
         v.showMessage(DefinePlayer.definePlayer(players, i));
         switch (player) {

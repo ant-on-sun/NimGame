@@ -2,7 +2,6 @@ package com.springsun.nimgamej.view;
 
 import com.springsun.nimgamej.model.ListOfHeaps;
 import com.springsun.nimgamej.model.ListOfPlayers;
-import com.springsun.nimgamej.model.Players;
 
 public interface IView {
     void showRules();
