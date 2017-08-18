@@ -2,6 +2,7 @@ package com.springsun.nimgamej.view.consoleview;
 
 import com.springsun.nimgamej.model.ListOfHeaps;
 import com.springsun.nimgamej.model.ListOfPlayers;
+import com.springsun.nimgamej.model.Players;
 import com.springsun.nimgamej.view.IView;
 
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfComputers.askNumberOfComputers;
@@ -9,6 +10,8 @@ import static com.springsun.nimgamej.view.consoleview.AskNumberOfHeaps.askNumber
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfHumans.askNumberOfHumans;
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfMadComputers.askNumberOfMadComputers;
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfStones.askNumberOfStones;
+import static com.springsun.nimgamej.view.consoleview.AskNumberOfTheHeap.askNumberOfTheHeap;
+import static com.springsun.nimgamej.view.consoleview.AskQuantityOfStones.askQuantityOfStones;
 
 public class ConsoleView implements IView {
     private int numberOfHumans;
@@ -21,6 +24,7 @@ public class ConsoleView implements IView {
     public void showRules(){
         System.out.println("RULES:");
         System.out.println("The HEAPS contain some amount of Stones");
+        System.out.println("(for example 'HEAP 3  [12]' means that third HEAP contains 12 Stones)");
         System.out.println("The competitors should take a number of Stones from a HEAP (only from one of the HEAPS)");
         System.out.println("At least 1 Stone must be taken from nonempty HEAP");
         System.out.println("It is impossible to take more Stones from a HEAP that it contains");
@@ -55,6 +59,32 @@ public class ConsoleView implements IView {
                 .numberOfMadComputers(numberOfMadComputers)
                 .createListOfPlayers();
         return listOfPlayers;
+    }
+
+    @Override
+    public void moveHuman(ListOfHeaps h) {
+        int heap = askNumberOfTheHeap(h);
+        int stones = askQuantityOfStones(h, heap);
+        h.setListOfHeaps(heap, stones);
+    }
+
+    @Override
+    public void showCurrentStateOfHeaps(ListOfHeaps h) {
+        int[] heaps = h.getListOfHeaps();
+        for (int i : heaps) {
+            System.out.println("HEAP " + (i + 1) + "  [ " + heaps[i] + " ]");
+        }
+
+    }
+
+    @Override
+    public void showMessage(Players player) {
+        System.out.println(player + "'s move:");
+    }
+
+    @Override
+    public void winnerAnnouncement(String winner){
+        System.out.println("Player " + winner + " has won!");
     }
 
     public void setNumberOfHumans(int numberOfHumans) {

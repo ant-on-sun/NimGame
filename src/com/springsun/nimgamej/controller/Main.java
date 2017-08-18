@@ -14,6 +14,16 @@ public class Main {
         v.getInitialConditions();
         ListOfHeaps listOfHeaps = v.createHeaps();
         ListOfPlayers listOfPlayers = v.createPlayers();
-        
+        int i = 0;
+        do {
+            Move.makeMove(v, listOfHeaps, listOfPlayers.getPlayers().get(i));
+            v.showCurrentStateOfHeaps(listOfHeaps);
+            i++;
+            if (i == listOfPlayers.getPlayers().size()) {
+                i = 0;
+            }
+        } while (ViktoryCondition.nobodyHasWonYet(listOfHeaps.getListOfHeaps()));
+        v.winnerAnnouncement(DefineWinner.defineWinner(listOfPlayers, i));
+
     }
 }

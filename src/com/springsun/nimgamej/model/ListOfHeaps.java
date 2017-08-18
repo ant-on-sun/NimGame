@@ -34,7 +34,7 @@ public class ListOfHeaps {
         return listOfHeaps;
     }
 
-    public void setListOfHeaps(final int numberOfHeap, final int numberOfStones) {
+    public void setListOfHeaps(int numberOfHeap, int numberOfStones) {
         listOfHeaps[numberOfHeap] = numberOfStones;
     }
 }
