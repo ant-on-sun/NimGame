@@ -2,8 +2,10 @@ package com.springsun.nimgamej.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ListOfPlayers {
+    private static Logger log = Logger.getLogger(ListOfPlayers.class.getName());
 
     private List<Players> players;
 
@@ -28,6 +30,7 @@ public class ListOfPlayers {
         }
 
         this.players = players;
+        log.fine("Filling list of players");
     }
 
     public static class Builder {

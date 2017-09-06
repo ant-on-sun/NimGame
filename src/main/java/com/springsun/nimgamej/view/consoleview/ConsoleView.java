@@ -4,6 +4,8 @@ import com.springsun.nimgamej.model.ListOfHeaps;
 import com.springsun.nimgamej.model.ListOfPlayers;
 import com.springsun.nimgamej.view.IView;
 
+import java.util.logging.Logger;
+
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfComputers.askNumberOfComputers;
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfHeaps.askNumberOfHeaps;
 import static com.springsun.nimgamej.view.consoleview.AskNumberOfHumans.askNumberOfHumans;
@@ -19,6 +21,8 @@ public class ConsoleView implements IView {
     private int numberOfHeaps;
     private int numberOfStones;
 
+    private static Logger log = Logger.getLogger(ConsoleView.class.getName());
+
     @Override
     public void showRules(){
         System.out.println("RULES:");
@@ -30,15 +34,23 @@ public class ConsoleView implements IView {
         System.out.println("The one who will take last Stones from last HEAP " +
                 "(thus all the HEAPS become empty) will WIN!");
         System.out.println("So let's begin the NimGame!\n");
+        log.fine("Show rules");
     }
 
     @Override
     public void getInitialConditions(){
-        askNumberOfHumans(this);
-        askNumberOfComputers(this);
-        askNumberOfMadComputers(this);
+        do {
+            askNumberOfHumans(this);
+            askNumberOfComputers(this);
+            askNumberOfMadComputers(this);
+            if (numberOfHumans + numberOfComputers + numberOfMadComputers == 0) {
+                System.out.println("There must be at least 1 player!");
+                log.info("The user entered 0 (zero) quantity of players any kind");
+            }
+        } while (numberOfHumans + numberOfComputers + numberOfMadComputers == 0);
         askNumberOfHeaps(this);
         askNumberOfStones(this);
+        log.fine("Get initial conditions");
     }
 
     @Override
@@ -47,6 +59,7 @@ public class ConsoleView implements IView {
                 .numberOfHeaps(numberOfHeaps)
                 .numberOfStones(numberOfStones)
                 .createListOfHeaps();
+        log.fine("Create heaps");
         return listOfHeaps;
     }
 
@@ -57,6 +70,7 @@ public class ConsoleView implements IView {
                 .numberOfComputers(numberOfComputers)
                 .numberOfMadComputers(numberOfMadComputers)
                 .createListOfPlayers();
+        log.fine("Create players");
         return listOfPlayers;
     }
 
@@ -65,6 +79,7 @@ public class ConsoleView implements IView {
         int heap = askNumberOfTheHeap(h);
         int stones = askQuantityOfStones(h, heap);
         h.setListOfHeaps(heap, h.getListOfHeaps()[heap] - stones);
+        log.fine("Human's move");
     }
 
     @Override
@@ -73,17 +88,20 @@ public class ConsoleView implements IView {
         for (int i = 0; i < heaps.length; i++) {
             System.out.println("HEAP " + (i + 1) + "  [ " + heaps[i] + " ]");
         }
+        log.fine("Show current state of heaps");
 
     }
 
     @Override
     public void showMessage(String player) {
         System.out.println(player + "'s move:");
+        log.fine("Show message who must move now");
     }
 
     @Override
     public void winnerAnnouncement(String winner){
         System.out.println("Player " + winner + " has won!");
+        log.fine("Winner announcement");
     }
 
     void setNumberOfHumans(int numberOfHumans) {

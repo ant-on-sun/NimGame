@@ -1,6 +1,9 @@
 package com.springsun.nimgamej.model;
 
+import java.util.logging.Logger;
+
 public class ListOfHeaps {
+    private static Logger log = Logger.getLogger(ListOfHeaps.class.getName());
     private int[] listOfHeaps;
 
     public ListOfHeaps(final int numberOfHeaps, final int numberOfStones) {
@@ -9,6 +12,7 @@ public class ListOfHeaps {
             listOfHeaps[i] = numberOfStones;
         }
         this.listOfHeaps = listOfHeaps;
+        log.fine("Filling list of heaps");
     }
 
     public static class Builder {
