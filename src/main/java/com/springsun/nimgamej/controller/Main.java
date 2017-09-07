@@ -5,13 +5,22 @@ import com.springsun.nimgamej.model.ListOfPlayers;
 import com.springsun.nimgamej.view.IView;
 import com.springsun.nimgamej.view.consoleview.ConsoleView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Main {
     private static Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws Exception {
+
+        try {
+            LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
+        } catch (IOException e) {
+            System.err.println("Could not set up logger configuration: " + e.toString());
+        }
 
         try {
             IView v = new ConsoleView();
@@ -36,7 +45,7 @@ public class Main {
             }
             v.winnerAnnouncement(DefinePlayer.definePlayer(listOfPlayers, i));
         } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception in Main: ", e);
+            log.log(Level.SEVERE, "Exception caught in Main: ", e);
         }
 
     }

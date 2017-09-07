@@ -24,7 +24,7 @@ public class ComputerMove {
         } else {
             MadComputerMove.moveMadComputer(h);
             log.info("Computer's move. The computer did not find a suitable move and delegated its execution" +
-                    "to Mad Computer");
+                    " to Mad Computer");
         }
         log.fine("Computer's move");
     }
