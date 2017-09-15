@@ -17,15 +17,12 @@ class DefinePlayer {
         try {
             playerName = players.getPlayers().get(i);
             j = players.getPlayers().indexOf(playerName);
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
             log.log(Level.SEVERE, "In method definePlayer: ", e);
+            throw e;
         }
         j = i - j +1;
-        try {
-            s = "" + playerName + "-" + j;
-        } catch (NullPointerException e) {
-            log.log(Level.SEVERE, "In method definePlayer: ", e);
-        }
+        s = "" + playerName + "-" + j;
         log.fine("Method definePlayer");
         return s;
     }

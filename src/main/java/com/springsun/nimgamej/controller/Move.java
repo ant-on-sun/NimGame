@@ -13,7 +13,8 @@ import static com.springsun.nimgamej.controller.MadComputerMove.moveMadComputer;
 class Move {
     private static Logger log = Logger.getLogger(Move.class.getName());
 
-    static void makeMove(IView v, ListOfHeaps h, Players player, ListOfPlayers players, int i) {
+    static void makeMove(IView v, ListOfHeaps h, Players player, ListOfPlayers players, int i)
+            throws IndexOutOfBoundsException, NullPointerException{
 
         v.showMessage(DefinePlayer.definePlayer(players, i));
         switch (player) {
